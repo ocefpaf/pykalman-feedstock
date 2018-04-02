@@ -5,18 +5,18 @@ package:
   version: {{ version }}
 
 source:
-  fn: pykalman-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/p/pykalman/pykalman-{{ version }}.tar.gz
   sha256: 816af47720d924a4c6016fa74b9e2c8c21165a08d91693c322a1741e8e07fb38
 
 build:
-  number: 0
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  number: 1
+  noarch: python
+  script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
     - python
-    - setuptools
+    - pip
 
   run:
     - python
